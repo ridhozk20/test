@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempat Cek Khodam</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .container {
+        text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .form-container {
+        margin-bottom: 20px;
+    }
+    
+    input {
+        padding: 10px;
+        font-size: 16px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }</style>
+</head>
+<body>
+    <div class="container">
+        <h1>HALO, SELAMAT DATANG DITEMPAT CEK KHODAM</h1>
+        <p>aku adalah program yang dibuat ridho</p>
+        <div class="form-container">
+            <label for="name">Masukkan nama Anda:</label>
+            <input type="text" id="name" placeholder="Nama Anda">
+            <button id="getKhodam">Dapatkan Khodam</button>
+        </div>
+        <p id="result"></p>
+        <button id="stop" style="display:none;">pencet ini jika selesai</button>
+    </div>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const data = [
+            "HARIMAU KURUS",
+            "GAJAH PINK",
+            "KOSONG",
+            "KUCING GENDUT",
+            "KUDANIL MAGERAN",
+            "KEPITING PELIT",
+            "BINTANG LAUT POLOS",
+            "GURITA GA PAKE CELANA",
+            "PAUS PEMBOROS",
+            "TIKUS TEJEPIT",
+            "GAJAH BELIDO",
+            "CICAK TERBANG",
+            "SINGA GUNDUL",
+            "BUAYA SUNDA",
+            "CUPANG BENCONG",
+            "SAPI SANGE"
+        ];
+    
+        const nameInput = document.getElementById('name');
+        const getKhodamButton = document.getElementById('getKhodam');
+        const resultText = document.getElementById('result');
+        const stopButton = document.getElementById('stop');
+    
+        let isStopped = false;
+    
+        getKhodamButton.addEventListener('click', () => {
+            if (isStopped) return;
+    
+            const name = nameInput.value.trim();
+            if (name === '') {
+                alert('Masukkan nama Anda terlebih dahulu!');
+                return;
+            }
+    
+            const khodam = data[Math.floor(Math.random() * data.length)];
+            resultText.textContent = `SELAMAT ${name} KHODAM ANDA ADALAH: ${khodam}`;
+            stopButton.style.display = 'block';
+        });
+    
+        stopButton.addEventListener('click', () => {
+            isStopped = true;
+            resultText.textContent = 'PROGRAM SELESAI, TERIMA KASIH';
+            stopButton.style.display = 'none';
+        });
+    });</script>
+</body>
+</html>
